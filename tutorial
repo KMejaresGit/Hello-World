@@ -1,0 +1,172 @@
+
+new file  :
+
+   import java.util.concurrent.TimeUnit;
+   import org.openqa.selenium.By;
+   import org.openqa.selenium.chrome.ChromeDriver;
+   import org.openqa.selenium.WebDriver;
+
+
+public class LoginRepo {
+
+    public static void main(String[] args) {
+        System.setProperty("webdriver.chrome.driver", "d:\\install\\chromedriver.exe");
+
+        WebDriver driver = new ChromeDriver();
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        driver.get("http://10.91.65.62:9292/");
+        if (driver.findElement(By.xpath("//*[@id=\"id1\"]/span/input[1]")).isEnabled()) {
+            System.out.println("Git Repository user name edit box Is enabled.");
+            driver.findElement(By.xpath("//*[@id=\"id1\"]/span/input[1]")).sendKeys("kimmejares");
+            driver.findElement(By.xpath("//*[@id=\"id1\"]/span/input[2]")).sendKeys("Louise11961");
+            driver.findElement(By.xpath("//*[@id=\"id1\"]/span/button")).click();
+
+            String Msg = driver.findElement(By.xpath("/html/body/div[3]/div/div[1]/div[2]/div[1]/span")).getText();
+            System.out.println("Login to Git Repository");
+            //String Msg = driver.findElement(By.xpath("/html/body/div[3]/div/div[1]/div[1]/h2")).getText();
+
+            String WelcomeMsg="owned";
+            if (Msg.equals(WelcomeMsg)){
+                System.out.println("Successful Login to Git Repository ->>" + Msg + " was displayed on screen");
+            }else {
+                System.out.println("Failed to Login to Git Repository");
+
+            }
+
+
+        }else {
+            System.out.println("Git Repository user name edit box Is Not enabled.");
+
+        }
+
+        driver.close();
+    }
+}
+
+// Sample 2
+/**
+ * Created by kimmejares on 08/06/2017.
+ * Function Overloading
+ */
+public class LearningFunctions {
+
+    public static int a = 30;
+    public static int b = 40;
+
+    public static void print() {
+
+        System.out.println("Learning Functions");
+    }
+
+    public static void addNumbers() {
+
+        int c = a + b;
+        System.out.println("Addition sample : " + c);
+    }
+
+    public static void addNumbers2(int r, int s) {
+
+        int add = r + s;
+        System.out.println("Addition sample with passing arguments: " + add);
+    }
+
+    public static void main(String[]args) {
+
+        print();
+        addNumbers();
+        addNumbers2(50,50);
+    }
+}
+
+// Sample 3
+/**
+ * Created by kimmejares on 08/06/2017.
+ */
+public class Loops {
+
+    public static void main (String[] args){
+
+        int i =1;
+
+        do{
+            System.out.println("Number is :" +i);
+            i++;
+        }while(i<=10);
+
+        //or
+        i=0;
+        while(i<=10){
+            System.out.println("Number is >>:" +i);
+            i++;
+        }
+        //or
+
+        for(int x=2;x<=20;x=x+2){
+            System.out.println("Number is ->>:" +x);
+        }
+        //Table of 2
+        for(int x=1;x<=10;x++){
+            System.out.println("Table of 3 ->>:" +3*x);
+        }
+    }
+}
+// Sample 4
+
+/**
+ * Created by kimmejares on 08/06/2017.
+ */
+public class printTables {
+
+    public static void table (int t) {
+
+        for  (int i=1; i <= 10; i++) {
+
+            System.out.println(t * i);
+        }
+    }
+
+    public static void main(String[] args) {
+
+        table(10);
+    }
+}
+
+//Sample 5
+/**
+ * Created by kimmejares on 08/06/2017.
+ */
+public class TwoDArrays {
+
+    public static void main (String[] args){
+        int rows = 3;
+        int cols = 3;
+
+        int table[][] = new int[rows][cols];
+
+        //assign 1st values in rows
+        table[0][0]= 10;
+        table[0][1]= 11;
+        table[0][2]= 12;
+
+        //assign 2nd values in rows
+        table[1][0]= 20;
+        table[1][1]= 21;
+        table[1][2]= 22;
+
+        //assign 3rd values in rows
+        table[2][0]= 30;
+        table[2][1]= 31;
+        table[2][2]= 32;
+
+        System.out.println(table.length );      //row length
+        System.out.println(table[0].length );   //col length
+        System.out.println(table[0][0]);        //value for first dimension
+
+        //print data in rectagular format
+        for(int i=0;i<rows;i++){
+            for(int j=0;j<cols;j++){
+                System.out.print("  "+table[i][j]);
+            }System.out.println(" ");
+        }
+    }
+}
